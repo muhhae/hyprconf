@@ -1,0 +1,7 @@
+hl.on("hyprland.start", function()
+	hl.exec_cmd("waybar")
+	hl.exec_cmd("elephant")
+	hl.exec_cmd("rambox")
+	hl.exec_cmd("spotify")
+	hl.exec_cmd("walker --gapplication-service")
+end)
