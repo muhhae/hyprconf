@@ -16,7 +16,6 @@ hl.bind("SUPER + CTRL + COMMA", hl.dsp.exec_cmd("omarchy-toggle-notification-sil
 
 hl.bind("SUPER + E", hl.dsp.exec_cmd(FileManager))
 hl.bind("SUPER + F", hl.dsp.window.float({ action = "toggle" }))
-hl.bind("SUPER + A", hl.dsp.exec_cmd(Menu))
 
 hl.bind("SUPER + left", hl.dsp.focus({ direction = "left" }))
 hl.bind("SUPER + right", hl.dsp.focus({ direction = "right" }))
@@ -53,8 +52,11 @@ hl.bind("SUPER + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 hl.bind("SUPER + TAB", hl.dsp.exec_cmd("~/personal/omarchy-configuration/scripts/overview.py"))
-hl.bind("SUPER + ESCAPE", hl.dsp.exec_cmd("omarchy-menu System"))
-hl.bind("SUPER + SPACE", hl.dsp.exec_cmd("omarchy-menu"))
+
+local menu = require("actions.menu")
+hl.bind("SUPER + A", menu.App)
+hl.bind("SUPER + ESCAPE", menu.System)
+hl.bind("SUPER + SPACE", menu.Omarchy)
 
 hl.bind("SUPER + CTRL + left", hl.dsp.layout("colresize -0.1"))
 hl.bind("SUPER + CTRL + right", hl.dsp.layout("colresize +0.1"))
