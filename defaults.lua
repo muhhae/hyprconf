@@ -1,3 +1,2 @@
-Terminal = "ghostty"
+Terminal = "kitty"
 FileManager = "nautilus"
-Menu = "walker"

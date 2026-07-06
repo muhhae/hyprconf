@@ -1,35 +1,41 @@
 ---------------------
 ---- KEYBINDINGS ----
 ---------------------
-
-require("defaults")
 require("utilities")
-require("bindings.swayosd")
 
-hl.bind("SUPER + RETURN", hl.dsp.exec_cmd(Terminal))
+hl.bind("F11", hl.dsp.window.fullscreen())
+hl.bind("SUPER + RETURN", hl.dsp.exec_cmd("runapp kitty"))
+hl.bind(
+	"SUPER + SHIFT + RETURN",
+	focus_or_launch("tmux.main", 'xdg-terminal-exec --app-id=tmux.main sh -c "tmux a || tmux"')
+)
 hl.bind("SUPER + W", hl.dsp.window.close())
-hl.bind("SUPER + R", focus_or_launch("rambox", "rambox"))
+hl.bind("SUPER + R", focus_or_launch("ferdium", "ferdium"))
 hl.bind("SUPER + B", focus_or_launch("zen", "zen-browser"))
-hl.bind("SUPER + COMMA", hl.dsp.exec_cmd("makoctl dismiss"))
-hl.bind("SUPER + CTRL + i", hl.dsp.exec_cmd("omarchy-toggle-idle"))
-hl.bind("SUPER + CTRL + COMMA", hl.dsp.exec_cmd("omarchy-toggle-notification-silencing"))
+hl.bind("SUPER + ALT + B", focus_or_launch("firefox-min", "firefox --name firefox-min -P firefox-min-profile"))
 
-hl.bind("SUPER + E", hl.dsp.exec_cmd(FileManager))
+hl.bind("SUPER + SHIFT + E", hl.dsp.exec_cmd("runapp nautilus"))
+hl.bind("SUPER + E", hl.dsp.exec_cmd("runapp xdg-terminal-exec --app-id=tui.superfile spf"))
+
 hl.bind("SUPER + F", hl.dsp.window.float({ action = "toggle" }))
 
 hl.bind("SUPER + left", hl.dsp.focus({ direction = "left" }))
 hl.bind("SUPER + right", hl.dsp.focus({ direction = "right" }))
-
 hl.bind("SUPER + up", hl.dsp.focus({ direction = "up" }))
 hl.bind("SUPER + down", hl.dsp.focus({ direction = "down" }))
-
 hl.bind("SUPER + ALT + up", hl.dsp.focus({ workspace = "-1" }))
 hl.bind("SUPER + ALT + down", hl.dsp.focus({ workspace = "+1" }))
-
 hl.bind("SUPER + ALT + left", hl.dsp.focus({ monitor = "-1" }))
-hl.bind("SUPER + ALT + right", hl.dsp.focus({ monitor = "+1" }))
+hl.bind("ALT + TAB", hl.dsp.window.cycle_next())
 
-hl.bind("Print", hl.dsp.exec_cmd("omarchy-capture-screenshot"))
+hl.bind("SUPER + SHIFT + D", function()
+	local dim_inactive = hl.get_config("decoration.dim_inactive")
+	hl.config({
+		decoration = {
+			dim_inactive = not dim_inactive,
+		},
+	})
+end)
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
@@ -39,24 +45,12 @@ for i = 1, 10 do
 	hl.bind("SUPER + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
--- Example special workspace (scratchpad)
-hl.bind("SUPER + S", hl.dsp.workspace.toggle_special("magic"))
-hl.bind("SUPER + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
-
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind("SUPER + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind("SUPER + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 
--- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind("SUPER + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
-
-hl.bind("SUPER + TAB", hl.dsp.exec_cmd("~/personal/omarchy-configuration/scripts/overview.py"))
-
-local menu = require("actions.menu")
-hl.bind("SUPER + A", menu.App)
-hl.bind("SUPER + ESCAPE", menu.System)
-hl.bind("SUPER + SPACE", menu.Omarchy)
 
 hl.bind("SUPER + CTRL + left", hl.dsp.layout("colresize -0.1"))
 hl.bind("SUPER + CTRL + right", hl.dsp.layout("colresize +0.1"))
@@ -66,3 +60,13 @@ hl.bind("SUPER + SHIFT + right", hl.dsp.layout("swapcol r"))
 
 hl.bind("SUPER + SHIFT + comma", hl.dsp.layout("consume_or_expel prev"))
 hl.bind("SUPER + SHIFT + period", hl.dsp.layout("consume_or_expel next"))
+
+hl.bind("XF86Tools", focus_or_launch("spotify", "spotify-launcher"))
+hl.bind("SUPER + M", focus_or_launch("spotify", "spotify-launcher"))
+
+hl.bind("SUPER + G", function()
+	hl.plugin.scrolloverview.overview("toggle")
+	-- if hl.plugin.scrolloverview ~= nil then
+	-- 	debug_print("Hello")
+	-- end
+end)

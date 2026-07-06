@@ -1,7 +1,11 @@
-hl.env("XCURSOR_SIZE", "24")
-hl.env("HYPRCURSOR_SIZE", "24")
-hl.env("TERMINAL", "ghostty")
-
-local current_path = os.getenv("PATH")
-local current_home = os.getenv("HOME")
-hl.env("PATH", current_path .. ":/" .. current_home .. "/omarchy/bin")
+-- require("defaults")
+--
+-- hl.env("XCURSOR_SIZE", "24")
+-- hl.env("HYPRCURSOR_SIZE", "24")
+-- hl.env("TERMINAL", Terminal)
+-- hl.env("QT_ICON_THEME", "gtk4")
+-- hl.env("QT_QPA_PLATFORMTHEME", "gtk4")
+--
+-- local current_path = os.getenv("PATH")
+-- local current_home = os.getenv("HOME")
+-- hl.env("PATH", current_path .. ":/" .. current_home .. "/omarchy/bin")
