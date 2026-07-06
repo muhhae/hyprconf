@@ -1,3 +1,9 @@
+---Debug print
+---@param msg string
+function debug_print(msg)
+	hl.notification.create({ text = "DEBUG: " .. msg, timeout = 3000 })
+end
+
 ---trim string
 ---@param s string
 ---@return string
@@ -18,7 +24,7 @@ function focus_or_launch(initial_class, executable)
 				return
 			end
 		end
-		hl.exec_cmd(executable)
+		hl.exec_cmd("runapp " .. executable)
 	end
 end
 
@@ -58,4 +64,15 @@ function exec_cmd_with_callback(cmd, callback)
 		end
 	end, { timeout = 100, type = "repeat" })
 	poller:set_enabled(true)
+end
+
+---Return keys of table
+---@param t table
+---@return table
+function get_keys(t)
+	local keys = {}
+	for k, _ in pairs(t) do
+		table.insert(keys, k)
+	end
+	return keys
 end
