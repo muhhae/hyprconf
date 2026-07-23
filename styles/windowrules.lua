@@ -8,10 +8,19 @@
 --
 
 hl.window_rule({
-	enabled = false,
-	name = "1_starting_width",
-	match = { initial_class = "factorio|zen|ferdium|steam|antigravity" },
-	scrolling_width = 1,
+    match = {
+        initial_class = "Zotero",
+        initial_title = "Citation Dialog",
+    },
+    float = true,
+    center = true,
+})
+
+hl.window_rule({
+    enabled = false,
+    name = "1_starting_width",
+    match = { initial_class = "factorio|zen|ferdium|steam|antigravity" },
+    scrolling_width = 1,
 })
 
 -- org.cachyos.KernelManager
