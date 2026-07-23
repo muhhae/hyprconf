@@ -1,7 +1,7 @@
 ---Debug print
 ---@param msg string
 function debug_print(msg)
-	hl.notification.create({ text = "DEBUG: " .. msg, timeout = 3000 })
+    io.open("/tmp/hyprland_debug.log", "a"):write(msg .. "\n"):close()
 end
 
 ---trim string
