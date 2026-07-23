@@ -1,5 +1,5 @@
 hl.on("monitor.added", function(m)
-	-- hl.exec_cmd("xdg-terminal-exec --title=hyprmon hyprmon")
+    -- hl.exec_cmd("xdg-terminal-exec --title=hyprmon hyprmon")
 end)
 
 hl.on("window.title", function(w)

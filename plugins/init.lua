@@ -18,6 +18,7 @@ hl.config({
 	},
 })
 
-hl.bind("SUPER + TAB", function()
-	hl.plugin.scrolloverview.overview("toggle")
-end)
+	hl.bind("SUPER + TAB", function()
+		hl.plugin.scrolloverview.overview("toggle")
+	end)
+end
